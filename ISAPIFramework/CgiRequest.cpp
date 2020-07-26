@@ -5,10 +5,16 @@
 #include <map>
 #include <vector>
 #include <sstream>
+#include <HttpExt.h>
 
 
-CgiRequest::CgiRequest(std::string requestString) {
-	this->ParseRequestString(requestString);
+CgiRequest::CgiRequest(EXTENSION_CONTROL_BLOCK* pECB) {
+	if (strcmp(pECB->lpszMethod, "GET") == 0) {
+		this->ParseRequestString(pECB->lpszQueryString);
+	}
+	else {
+		this->ParseRequestString((char *) pECB->lpbData);
+	}
 }
 
 std::string CgiRequest::CgiGetVal(std::string variable) {

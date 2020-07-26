@@ -3,10 +3,11 @@
 #include <map>
 #include <iostream>
 #include <vector>
+#include <HttpExt.h>
 class CgiRequest
 {
 	public:
-		CgiRequest(std::string requestString);
+		CgiRequest(EXTENSION_CONTROL_BLOCK* pECB);
 		std::string CgiGetVal(std::string variable);
 		std::string CgiGetRequestToString();
 	private:

@@ -4,7 +4,12 @@
 Application::Application(EXTENSION_CONTROL_BLOCK *pECB) {
 	this->pECB = pECB;
 	this->html = new HTML(pECB);
-	this->cgiRequest = new CgiRequest(pECB->lpszQueryString);
+	this->cgiRequest = new CgiRequest(pECB);
+}
+
+Application::~Application() {
+	delete this->html;
+	delete this->cgiRequest;
 }
 
 HTML * Application::getHTML() {

@@ -9,6 +9,7 @@ class Application
 		EXTENSION_CONTROL_BLOCK* pECB;
 	public:
 		Application(EXTENSION_CONTROL_BLOCK *pECB);
+		~Application();
 		HTML * getHTML();
 		CgiRequest * getCGI();
 };

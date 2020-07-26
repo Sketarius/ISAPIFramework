@@ -18,12 +18,10 @@ DWORD WINAPI HttpExtensionProc(EXTENSION_CONTROL_BLOCK* pECB) {
 	CgiRequest* cgiRequest = app->getCGI();
 	HTML* html = app->getHTML();
 
-	html->print("<!DOCTYPE html>\n"
-			   "	<head> \n"
-			   "		<title>ISAPI IIS CGI</title>\n"
-			   "	</head>\n"
-			   "	<body>\n"
-			   "		<h1>This is the entry point for your ISAPI CGI program.</h1>\n");
+	html->SetPageTitle("ISAPI Framework v1.0");
+	html->BeginPage();
+
+	html->print("<h1>This is the entry point for your ISAPI CGI program.</h1>\n");
 
 	html->print("This method prints to the browser! test and stuff <br />");
 	html->print("s=" + cgiRequest->CgiGetVal("s"));
@@ -34,8 +32,7 @@ DWORD WINAPI HttpExtensionProc(EXTENSION_CONTROL_BLOCK* pECB) {
 					 "	<input type=\"submit\" value=\"Submit\">\n"
 					 "</form>\n");
 
-	html->print("	</body>\n"
-					 "</html>\n");
+	html->EndPage();
 
 	delete app;
 	return HSE_STATUS_SUCCESS;
