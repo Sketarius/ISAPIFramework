@@ -2,9 +2,10 @@
 #include <string>
 #include <HttpExt.h>
 class HTML
-{
+{	private:
+		EXTENSION_CONTROL_BLOCK* pECB;
 	public:
-		HTML();
-		void print(EXTENSION_CONTROL_BLOCK* pECB, std::string content);
+		HTML(EXTENSION_CONTROL_BLOCK* pECB);
+		void print(std::string content);
 };
 

@@ -160,12 +160,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
     <ClInclude Include="CgiRequest.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="HTML.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="CgiRequest.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="HTML.cpp" />
