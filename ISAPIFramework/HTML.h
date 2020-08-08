@@ -15,5 +15,6 @@ class HTML
 		void BeginPage();
 		void EndPage();
 		void print(std::string content);
+		void print(TCHAR *content);
 };
 

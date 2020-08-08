@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "HTML.h"
+#include <tchar.h>
 
 HTML::HTML(EXTENSION_CONTROL_BLOCK* pECB) {
 	this->pECB = pECB;
@@ -38,4 +39,12 @@ void HTML::SetPageTitle(std::string pageTitle) {
 void HTML::print(std::string content) {
 	DWORD size = static_cast<DWORD>(strlen(content.c_str()));
 	pECB->WriteClient(this->pECB->ConnID, (LPVOID) content.c_str(), &size, 0);
+}
+
+void HTML::print(TCHAR *content) {
+	std::wstring wContent(&content[0]);
+	std::string  sContent(wContent.begin(), wContent.end());
+	DWORD size = static_cast<DWORD>(_tcslen(content));
+
+	pECB->WriteClient(this->pECB->ConnID, (LPVOID)sContent.c_str(), &size, 0);
 }
